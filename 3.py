@@ -4,13 +4,15 @@ def factors(num):
     upto = math.ceil(math.sqrt(num))
     list_of_factors = []
     
-    for i in range(1, upto+1):
+    for i in range(1, upto + 1):
         if num % i == 0:
-            list_of_factors.append(i)
-            if i != num // i:
+            if i not in list_of_factors:
                 list_of_factors.append(i)
+            if i != num // i and num // i not in list_of_factors:
+                list_of_factors.append(num // i)
             
     return sorted(list_of_factors, reverse=True)
+
 
 def is_prime(num):
     if num <= 1:
